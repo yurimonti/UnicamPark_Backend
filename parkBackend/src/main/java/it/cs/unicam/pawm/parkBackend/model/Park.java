@@ -1,19 +1,19 @@
 package it.cs.unicam.pawm.parkBackend.model;
 
-import it.cs.unicam.pawm.parkBackend.MyTime;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "parks")
 public class Park {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "isEmpty")
     private boolean isEmpty;
-    private Utente utenteAssociato;
-    private MyTime tempo;
 
     public Park() {
-        //id verrà settato automaticamente dalla Strategy generation
         this.isEmpty = true;
-        this.utenteAssociato=null;
-        this.tempo = new MyTime();
     }
 
     public Park(String nome) {
@@ -45,11 +45,4 @@ public class Park {
         isEmpty = empty;
     }
 
-    public Utente getUtenteAssociato() {
-        return utenteAssociato;
-    }
-
-    public void setUtenteAssociato(Utente utenteAssociato) {
-        this.utenteAssociato = utenteAssociato;
-    }
 }
